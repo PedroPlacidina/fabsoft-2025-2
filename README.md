@@ -2,4 +2,8 @@
 Nome: Pedro Henrique Placidina Maria
 
 # Proposta de Projeto
-Pe
+⦁	PetHostel
+  *  CADASTRO DE ANIMAIS
+  *  AGENDAMENTO DE RESERVAS PARA O PET
+  *  HISTORICO DE RESERVAS
+

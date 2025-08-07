@@ -5,7 +5,9 @@ Nome: Pedro Henrique Placidina Maria
 ⦁	PetHostel
   *  CADASTRO DE ANIMAIS
   *  AGENDAMENTO DE RESERVAS PARA O PET
-  *  HISTORICO DE RESER
+  *  HISTORICO DE RESERVAS
+  *  CADASTRO DE USUARIOS
+    
 
   ## Aula 05/08   
 

@@ -34,7 +34,7 @@ Nome: Pedro Henrique Placidina Maria
   - EXECUÇÃO
     3) Passar .class -> java.exe (JVM) -> ling maquina
 
-## Aula 12/08
+### Aula 12/08
 - História de Usuarios
     *Como um dono de pet, eu quero registrar os dados do meu animal (nome, raça, idade, peso, vacinas), para que o hotel tenha as informações necessárias para cuidados adequados.*
 - Registro do dono 

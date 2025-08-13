@@ -18,7 +18,7 @@ Nome: Pedro Henrique Placidina Maria
 
 </s>
 
-  ## Aula 05/08   
+ ## Aula 05/08   
 
   - JRE - Java Runtime Enviroment
     - Ambiente minimo para executar um programa Java
@@ -33,4 +33,6 @@ Nome: Pedro Henrique Placidina Maria
     arquivo.class
   - EXECUÇÃO
     3) Passar .class -> java.exe (JVM) -> ling maquina
+
+## Aula 12/08
     

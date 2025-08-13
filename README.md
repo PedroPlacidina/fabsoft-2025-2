@@ -7,13 +7,14 @@ Nome: Pedro Henrique Placidina Maria
   *  AGENDAMENTO DE RESERVAS PARA O PET
   *  HISTORICO DE RESERVAS
   *  CADASTRO DE USUARIOS
-
-</s>
+    
+<s>
 ⦁	Organizador de Estudos
   * CADASTRO DE DISCIPLINAS
   * ADICAO DE TAREFAS
   * CALENDARIO INTEGRADO
-    
+
+</s>
 
   ## Aula 05/08   
 

@@ -8,8 +8,8 @@ Nome: Pedro Henrique Placidina Maria
   *  HISTORICO DE RESERVAS
   *  CADASTRO DE USUARIOS
 
-</S>
-# Organizador de Estudos
+</s>
+⦁	Organizador de Estudos
   * CADASTRO DE DISCIPLINAS
   * ADICAO DE TAREFAS
   * CALENDARIO INTEGRADO

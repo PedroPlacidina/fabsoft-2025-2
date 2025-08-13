@@ -9,6 +9,7 @@ Nome: Pedro Henrique Placidina Maria
   *  CADASTRO DE USUARIOS
     
 <s>
+ 
 ⦁	Organizador de Estudos
   * CADASTRO DE DISCIPLINAS
   * ADICAO DE TAREFAS

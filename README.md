@@ -36,7 +36,7 @@ Nome: Pedro Henrique Placidina Maria
 
 ### Aula 12/08
 - História de Usuarios
-    - Como um dono de pet, eu quero registrar os dados do meu animal (nome, raça, idade, peso, vacinas), para que o hotel tenha as informações necessárias para cuidados adequados.
+    - Como um dono de pet, eu quero registrar os dados do meu animal (nome, raça, idade, peso), para que o hotel tenha as informações necessárias para cuidados adequados.
 - Registro do dono 
     - Como um dono de pet, eu quero me cadastrar no sistema com meus dados (nome, telefone, e-mail), para que eu possa fazer reservas e ser identificado no sistema.
 - Criar Reserva 
@@ -48,7 +48,108 @@ Nome: Pedro Henrique Placidina Maria
 - Relatório de Hospedagem Atual 
     - Como um funcionário, eu quero ver todos os pets hospedados atualmente, para saber quem está no hotel no momento.
   
-  
+## Aula 19/08
+## Diagrama de entidades
+
+- [Extensão Mermaid](https://marketplace.visualstudio.com/items?itemName=vstirbu.vscode-mermaid-preview)
+- [Mermaid ClassDiagram](https://github.com/mermaid-js/mermaid/blob/develop/packages/mermaid/src/docs/syntax/classDiagram.md)
+
+| Type    | Description   |
+| ------- | ------------- |
+| `<\|--` | Inheritance   |
+| `*--`   | Composition   |
+| `o--`   | Aggregation   |
+| `-->`   | Association   |
+| `--`    | Link (Solid)  |
+| `..>`   | Dependency    |
+| `..\|>` | Realization   |
+| `..`    | Link (Dashed) |
+
+```mermaid
+---
+title: Diagrama de Entidades - PetHostel
+---
+classDiagram
+    Usuario "1" --> "*" Pet
+    Usuario "1" --> "*" Reserva
+    Reserva "*" --> "*" Servico
+
+    namespace entity {
+      class Usuario {
+          -id : long
+          -nome : String
+          -email : String
+          -telefone : String
+          -senha : String
+          -tipo : String  // dono, administrador
+
+          +getId() long
+          +setId(id:long) void
+          +getNome() String
+          +setNome(nome:String) void
+          +getEmail() String
+          +setEmail(email:String) void
+          +getTelefone() String
+          +setTelefone(telefone:String) void
+          +getSenha() String
+          +setSenha(senha:String) void
+          +getTipo() String
+          +setTipo(tipo:String) void
+      }
+
+      class Pet {
+          -id : long
+          -nome : String
+          -raca : String
+          -idade : int
+          -peso : float
+
+          +getId() long
+          +setId(id:long) void
+          +getNome() String
+          +setNome(nome:String) void
+          +getRaca() String
+          +setRaca(raca:String) void
+          +getIdade() int
+          +setIdade(idade:int) void
+          +getPeso() float
+          +setPeso(peso:float) void
+      }
+
+      class Reserva {
+          -id : long
+          -dataCheckIn : Date
+          -dataCheckOut : Date
+          -status : String // pendente, confirmada, cancelada
+
+          +getId() long
+          +setId(id:long) void
+          +getDataCheckIn() Date
+          +setDataCheckIn(dataCheckIn:Date) void
+          +getDataCheckOut() Date
+          +setDataCheckOut(dataCheckOut:Date) void
+          +getStatus() String
+          +setStatus(status:String) void
+      }
+
+      class Servico {
+          -id : long
+          -nome : String
+          -descricao : String
+          -valor : float
+
+          +getId() long
+          +setId(id:long) void
+          +getNome() String
+          +setNome(nome:String) void
+          +getDescricao() String
+          +setDescricao(descricao:String) void
+          +getValor() float
+          +setValor(valor:float) void
+      }
+    }
+
+```
 
 
 

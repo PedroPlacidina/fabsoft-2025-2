@@ -72,7 +72,7 @@ title: Diagrama de Entidades - PetHostel
 classDiagram
     Usuario "1" --> "*" Pet
     Usuario "1" --> "*" Reserva
-    Reserva "*" --> "*" Servico
+    Reserva "*" --> "1" Servico
 
     namespace entity {
       class Usuario {

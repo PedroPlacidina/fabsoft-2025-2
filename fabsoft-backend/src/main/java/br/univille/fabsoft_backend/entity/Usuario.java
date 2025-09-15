@@ -1,17 +1,17 @@
 package br.univille.fabsoft_backend.entity;
 
-import org.hibernate.annotations.ManyToAny;
 
-import jakarta.annotation.Generated;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+
 
 @Entity
 public class Usuario {
@@ -25,15 +25,15 @@ public class Usuario {
     private String senha;
     private String tipo;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pet_id")
-    private Pet pet;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Pet> pets = new ArrayList<>();
 
-    public Pet getPet() {
-        return pet;
+    
+    public List<Pet> getPets() {
+        return pets;
     }
-    public void setPet(Pet pet) {
-        this.pet = pet;
+    public void setPets(List<Pet> pets) {
+        this.pets = pets;
     }
     public String getEmail() {
         return email;

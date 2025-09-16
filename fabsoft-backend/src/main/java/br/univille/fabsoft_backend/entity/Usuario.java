@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 
@@ -28,7 +29,17 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pet> pets = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id")
+    private List<Reserva> reservas = new ArrayList<>();
+
     
+    public List<Reserva> getReservas() {
+        return reservas;
+    }
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
+    }
     public List<Pet> getPets() {
         return pets;
     }

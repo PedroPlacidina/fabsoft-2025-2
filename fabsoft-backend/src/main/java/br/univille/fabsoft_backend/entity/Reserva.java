@@ -25,6 +25,7 @@ public class Reserva {
     private Date dataChekout;
     private String status;
 
+
     public long getId() {
         return id;
     }

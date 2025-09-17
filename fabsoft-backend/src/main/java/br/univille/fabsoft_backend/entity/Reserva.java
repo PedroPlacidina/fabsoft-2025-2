@@ -1,13 +1,18 @@
 package br.univille.fabsoft_backend.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
@@ -15,35 +20,46 @@ import jakarta.persistence.TemporalType;
 public class Reserva {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataChekin;
-    @Temporal(TemporalType.DATE)
+    private Date dataCheckIn;
     
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dataChekout;
+    private Date dataCheckOut;
     private String status;
 
-
-    public long getId() {
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "reserva_id")
+    private List<Servico> ListaServicos = new ArrayList<>();
+    
+    public List<Servico> getServicos() {
+        return ListaServicos;
+    }
+    public void setServicos(List<Servico> servicos) {
+        this.ListaServicos = servicos;
+    }
+    public Long getId() {
         return id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    public Date getDataChekin() {
-        return dataChekin;
+
+    public Date getDataCheckIn() {
+        return dataCheckIn;
     }
-    public void setDataChekin(Date dataChekin) {
-        this.dataChekin = dataChekin;
+    public void setDataCheckIn(Date dataCheckIn) {
+        this.dataCheckIn = dataCheckIn;
     }
-    public Date getDataChekout() {
-        return dataChekout;
+    public Date getDataCheckOut() {
+        return dataCheckOut;
     }
-    public void setDataChekout(Date dataChekout) {
-        this.dataChekout = dataChekout;
+    public void setDataCheckOut(Date dataCheckOut) {
+        this.dataCheckOut = dataCheckOut;
     }
+    
     public String getStatus() {
         return status;
     }

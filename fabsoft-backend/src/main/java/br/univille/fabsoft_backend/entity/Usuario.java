@@ -23,28 +23,29 @@ public class Usuario {
     @Column(length = 100)
     private String email;
     private String telefone;
+    @Column(length = 10)
     private String senha;
     private String tipo;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Pet> pets = new ArrayList<>();
+    private List<Pet> ListaPets = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id")
-    private List<Reserva> reservas = new ArrayList<>();
+    private List<Reserva> ListaReservas = new ArrayList<>();
 
     
     public List<Reserva> getReservas() {
-        return reservas;
+        return ListaReservas;
     }
     public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
+        this.ListaReservas = reservas;
     }
     public List<Pet> getPets() {
-        return pets;
+        return ListaPets;
     }
     public void setPets(List<Pet> pets) {
-        this.pets = pets;
+        this.ListaPets = pets;
     }
     public String getEmail() {
         return email;

@@ -1,15 +1,15 @@
 package br.univille.fabsoft_backend.repository;
 
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import br.univille.fabsoft_backend.entity.Usuario;
+
+import br.univille.fabsoft_backend.entity.Reserva;
 
 @Repository
-public interface UsuarioRepository 
-    extends JpaRepository<Usuario,Long>{
-    List<Usuario> findByEmailAndNome(String email, String nome);
- 
+public interface ReservaRepository 
+    extends JpaRepository<Reserva,Long>{
+    List<Reserva> findByUsuarioId(Long usuarioId);
+
 }

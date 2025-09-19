@@ -10,6 +10,5 @@ import br.univille.fabsoft_backend.entity.Reserva;
 @Repository
 public interface ReservaRepository 
     extends JpaRepository<Reserva,Long>{
-    List<Reserva> findByUsuarioId(Long usuarioId);
 
 }

@@ -27,7 +27,8 @@ public class Usuario {
     private String senha;
     private String tipo;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id")
     private List<Pet> ListaPets = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)

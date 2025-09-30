@@ -15,14 +15,17 @@ Content-Type: application/json
 }
 
 ### PUT Usuários
-PUT  http://localhost:8080/api/v1/usuarios
+PUT  http://localhost:8080/api/v1/usuarios/1
 Content-Type: application/json
 
 {   
-    "nome": "Lucas",
+    "nome": "LuSCAS",
     "email": "lucas@gmail.com",
     "telefone": "5555-5555",
     "senha": "1234",
     "tipo": "cliente"
 }
 
+### DELETE Usuários
+DELETE  http://localhost:8080/api/v1/usuarios/1
+Content-Type: application/json

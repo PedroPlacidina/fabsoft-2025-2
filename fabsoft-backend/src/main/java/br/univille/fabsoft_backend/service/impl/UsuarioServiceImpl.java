@@ -44,5 +44,16 @@ public class UsuarioServiceImpl implements UsuarioService{
         return UsuarioAntigo;
     }
 
+    @Override
+    public Usuario delete(long id) throws Exception {
+        var UsuarioAntigo = repository.getById(id);
+        if(UsuarioAntigo == null){
+            throw new Exception("Usuário não encontrado");
+        }
+
+        repository.delete(UsuarioAntigo);
+        return UsuarioAntigo;
+    }
+
 
 }

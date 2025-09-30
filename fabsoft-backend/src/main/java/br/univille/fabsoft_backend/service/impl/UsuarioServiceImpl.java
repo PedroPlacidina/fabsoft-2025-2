@@ -18,6 +18,30 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public List<Usuario> getAll() {
         return repository.findAll();
+        
+    }
+
+    @Override
+    public Usuario save(Usuario usuario) {
+        return repository.save(usuario);
+    }
+
+    @Override
+    public Usuario update(long id, Usuario usuario) throws Exception {
+        
+        var UsuarioAntigo = repository.getById(id);
+        if(UsuarioAntigo == null){
+            throw new Exception("Usuário não encontrado");
+        }
+
+        UsuarioAntigo.setNome(usuario.getNome());
+        UsuarioAntigo.setEmail(usuario.getEmail());
+        UsuarioAntigo.setTelefone(usuario.getTelefone());
+        UsuarioAntigo.setSenha(usuario.getSenha());
+        UsuarioAntigo.setTipo(usuario.getTipo());
+
+        repository.save(UsuarioAntigo);
+        return UsuarioAntigo;
     }
 
 

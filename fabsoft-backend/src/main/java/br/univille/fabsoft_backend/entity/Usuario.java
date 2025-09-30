@@ -12,6 +12,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 
 @Entity
@@ -19,9 +22,12 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank(message = "O nome é obrigatório")
     private String nome;
     @Column(length = 100)
+    @Email(message = "Email inválido")
     private String email;
+    @Pattern(regexp = "\\d{4,5}-?\\d{4}$", message = "Telefone inválido")
     private String telefone;
     @Column(length = 10)
     private String senha;
@@ -29,24 +35,24 @@ public class Usuario {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id")
-    private List<Pet> ListaPets = new ArrayList<>();
+    private List<Pet> pets = new ArrayList<>(); 
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "usuario_id")
-    private List<Reserva> ListaReservas = new ArrayList<>();
+    @JoinColumn(name = "usuario_id") 
+    private List<Reserva> reservas = new ArrayList<>(); 
 
     
     public List<Reserva> getReservas() {
-        return ListaReservas;
+        return reservas;
     }
     public void setReservas(List<Reserva> reservas) {
-        this.ListaReservas = reservas;
+        this.reservas = reservas;
     }
     public List<Pet> getPets() {
-        return ListaPets;
+        return pets;
     }
     public void setPets(List<Pet> pets) {
-        this.ListaPets = pets;
+        this.pets = pets;
     }
     public String getEmail() {
         return email;

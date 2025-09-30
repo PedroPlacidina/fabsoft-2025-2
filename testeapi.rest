@@ -1,3 +1,28 @@
 ### GET Usuários
 GET http://localhost:8080/api/v1/usuarios
 Content-Type: application/json
+
+### POST Usuários
+POST http://localhost:8080/api/v1/usuarios
+Content-Type: application/json
+
+{   
+    "nome": "Lucas",
+    "email": "lucas@gmail.com",
+    "telefone": "5555-5555",
+    "senha": "1234",
+    "tipo": "cliente"
+}
+
+### PUT Usuários
+PUT  http://localhost:8080/api/v1/usuarios
+Content-Type: application/json
+
+{   
+    "nome": "Lucas",
+    "email": "lucas@gmail.com",
+    "telefone": "5555-5555",
+    "senha": "1234",
+    "tipo": "cliente"
+}
+

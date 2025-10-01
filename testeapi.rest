@@ -21,11 +21,44 @@ Content-Type: application/json
 {   
   "nome": "LucasS",
   "email": "lucas@gmail.com",
-  "telefone": "5555-5555",
+  "telefone": "9999-5555",
   "senha": "1234",
   "tipo": "cliente"
 }
 
 ### DELETE Usuários
 DELETE  http://localhost:8080/api/v1/usuarios/1
+Content-Type: application/json
+
+
+######## CRUD PETS ########
+
+### GET Pets
+GET http://localhost:8080/api/v1/pets
+Content-Type: application/json
+
+### POST Pets
+POST http://localhost:8080/api/v1/pets
+Content-Type: application/json
+
+{
+  "nome": "princesa",
+  "raca": "Vira-lata",
+  "idade": 4,
+  "peso": 5.5
+}
+
+### PUT Pets
+PUT http://localhost:8080/api/v1/pets/1
+Content-Type: application/json
+
+{
+  "nome": "princesa",
+  "raca": "Pitbull",
+  "idade": 4,
+  "peso": 5.5
+}
+
+### DELETE Pets
+DELETE http://localhost:8080/api/v1/pets/1
 Content-Type: application/json

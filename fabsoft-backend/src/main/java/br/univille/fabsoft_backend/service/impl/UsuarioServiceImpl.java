@@ -27,13 +27,11 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public Usuario update(Long id, Usuario usuario) throws Exception {
+    public Usuario update(long id, Usuario usuario) throws Exception {
         
-        var UsuarioAntigo = repository.findById(id).orElseThrow( () -> new IllegalArgumentException("Usuario nao encontrado com este ID"));
-        if(UsuarioAntigo == null){
-            throw new Exception("Usuário não encontrado");
-        }
-        
+        var UsuarioAntigo = repository.findById(id)
+            .orElseThrow( () -> new IllegalArgumentException("Usuario nao encontrado com ID :" + id));
+                
         UsuarioAntigo.setNome(usuario.getNome());
         UsuarioAntigo.setEmail(usuario.getEmail());
         UsuarioAntigo.setTelefone(usuario.getTelefone());
@@ -46,10 +44,8 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public Usuario delete(long id) throws Exception {
-        var UsuarioAntigo = repository.findById(id).orElseThrow( () -> new IllegalArgumentException("Usuario nao encontrado com este ID"));
-        if(UsuarioAntigo == null){
-            throw new Exception("Usuário não encontrado");
-        }
+        var UsuarioAntigo = repository.findById(id)
+            .orElseThrow( () -> new IllegalArgumentException("Usuario nao encontrado com ID :" + id));
 
         repository.delete(UsuarioAntigo);
         return UsuarioAntigo;

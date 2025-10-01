@@ -61,7 +61,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable Long id){
+    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable long id){
         if(id <= 0 || usuario == null){
             return ResponseEntity.badRequest().build();
         }
@@ -76,7 +76,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Usuario> update(@PathVariable long id){
+    public ResponseEntity<Usuario> delete(@PathVariable long id){
 
         if(id <= 0){
             return ResponseEntity.badRequest().build();

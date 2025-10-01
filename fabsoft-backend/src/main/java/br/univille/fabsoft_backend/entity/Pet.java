@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+
 
 @Entity
 public class Pet {
@@ -15,18 +15,9 @@ public class Pet {
     @Column(length = 40)
     private String nome;
     private String raca;
-    private int idade;
-    private double peco;
+    private Integer idade;
+    private Double peso;
 
-    @ManyToOne
-    private Usuario usuario;
-    
-    public Usuario getUsuario() {
-        return usuario;
-    }
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
     public Long getId() {
         return id;
     }
@@ -45,16 +36,16 @@ public class Pet {
     public void setRaca(String raca) {
         this.raca = raca;
     }
-    public int getIdade() {
+    public Integer getIdade() {
         return idade;
     }
-    public void setIdade(int idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
-    public double getPeco() {
-        return peco;
+    public Double getPeso() {
+        return peso;
     }
-    public void setPeco(double peco) {
-        this.peco = peco;
+    public void setPeso(Double peso) {
+        this.peso = peso;
     }
 }

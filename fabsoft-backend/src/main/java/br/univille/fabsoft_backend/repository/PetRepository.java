@@ -10,7 +10,7 @@ import br.univille.fabsoft_backend.entity.Pet;
 @Repository
 public interface PetRepository 
     extends JpaRepository<Pet,Long>{
-        List<Pet> findByUsuarioId(Long usuarioId);  
+        
         List<Pet> findByRacaContaining(String raca);
 
 }

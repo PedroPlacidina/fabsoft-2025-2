@@ -7,6 +7,6 @@ import br.univille.fabsoft_backend.entity.Pet;
 public interface PetService {
     List<Pet> getAll();
     Pet save(Pet pet);
-    Pet update(long id, Pet pet) throws Exception;
-    Pet delete(long id) throws Exception;
+    Pet update(Long id, Pet pet) throws Exception;
+    Pet delete(Long id) throws Exception;
 }

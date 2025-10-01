@@ -62,3 +62,34 @@ Content-Type: application/json
 ### DELETE Pets
 DELETE http://localhost:8080/api/v1/pets/1
 Content-Type: application/json
+
+
+######## CRUD RESERVAS ########
+
+### GET Reservas
+GET http://localhost:8080/api/v1/reservas
+Content-Type: application/json
+
+### POST Reservas
+POST http://localhost:8080/api/v1/reservas
+Content-Type: application/json
+
+{
+    "dataCheckIn": "2025-05-16",
+    "dataCheckOut": "2025-05-20",
+    "status": "Finalizado"
+}
+
+### PUT Reservas
+PUT http://localhost:8080/api/v1/reservas/1
+Content-Type: application/json
+
+{
+  "dataCheckIn": "2024-05-16",
+    "dataCheckOut": "2024-10-20",
+    "status": "Finalizado"
+}
+
+### DELETE Pets
+DELETE http://localhost:8080/api/v1/reservas/1
+Content-Type: application/json

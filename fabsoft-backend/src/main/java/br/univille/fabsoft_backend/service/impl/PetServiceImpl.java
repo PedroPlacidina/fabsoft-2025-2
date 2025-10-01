@@ -26,7 +26,7 @@ public class PetServiceImpl implements PetService{
     }
 
     @Override
-    public Pet update(long id, Pet pet) throws Exception {
+    public Pet update(Long id, Pet pet) throws Exception {
         var petAntigo = repository.findById(id)
             .orElseThrow( () -> new IllegalArgumentException("Pet nao encontrado com ID :" + id));
         
@@ -40,7 +40,7 @@ public class PetServiceImpl implements PetService{
     }
 
     @Override
-    public Pet delete(long id) throws Exception {
+    public Pet delete(Long id) throws Exception {
         var petAntigo = repository.findById(id)
             .orElseThrow( () -> new IllegalArgumentException("Pet nao encontrado com ID :" + id));
         

@@ -11,5 +11,7 @@ import br.univille.fabsoft_backend.entity.Usuario;
 public interface UsuarioRepository 
     extends JpaRepository<Usuario,Long>{
     List<Usuario> findByEmailAndNome(String email, String nome);
+
+    
  
 }

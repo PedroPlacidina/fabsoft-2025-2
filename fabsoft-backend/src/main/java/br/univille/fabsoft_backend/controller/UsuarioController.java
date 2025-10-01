@@ -61,7 +61,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable long id){
+    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable Long id){
         if(id <= 0 || usuario == null){
             return ResponseEntity.badRequest().build();
         }

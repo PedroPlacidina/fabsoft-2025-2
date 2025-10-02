@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.univille.fabsoft_backend.entity.Reserva;
-import br.univille.fabsoft_backend.entity.Usuario;
 import br.univille.fabsoft_backend.service.ReservaService;
 
 @RestController
@@ -47,7 +46,7 @@ public class ReservaController {
     }
 
     @PutMapping("/{id}")
-        public ResponseEntity<Reserva> update(@RequestBody Reserva reserva, @PathVariable long id){
+    public ResponseEntity<Reserva> update(@RequestBody Reserva reserva, @PathVariable long id){
         if(id <= 0 || reserva == null){
             return ResponseEntity.badRequest().build();
         }

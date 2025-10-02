@@ -90,6 +90,38 @@ Content-Type: application/json
     "status": "Finalizado"
 }
 
-### DELETE Pets
+### DELETE Reservas
 DELETE http://localhost:8080/api/v1/reservas/1
 Content-Type: application/json
+
+
+######## CRUD SERVICOS ########
+
+### GET Servicos
+GET http://localhost:8080/api/v1/servicos
+Content-Type: application/json
+
+### POST Servicos
+POST http://localhost:8080/api/v1/servicos
+Content-Type: application/json
+
+{
+    "nome": "Banho e Tosa",
+    "descricao": "Serviço completo de banho e tosa para seu pet.",
+    "valor": 120.00
+}
+
+### PUT Servicos
+PUT http://localhost:8080/api/v1/servicos/1
+Content-Type: application/json
+
+{
+    "nome": "Banho e Tosa",
+    "descricao": "Serviço completo de banho e tosa para seu pet.",
+    "valor": 200.00
+}
+
+### DELETE Servicos
+DELETE http://localhost:8080/api/v1/servicos/1
+Content-Type: application/json
+

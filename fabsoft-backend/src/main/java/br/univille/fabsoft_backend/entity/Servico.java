@@ -12,7 +12,7 @@ public class Servico {
     private Long id;
     private String nome;
     private String descricao;
-    private double valor;
+    private Double valor;
     
     public Long getId() {
         return id;
@@ -32,10 +32,10 @@ public class Servico {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
-    public void setValor(double valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 }

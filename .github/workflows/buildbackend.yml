@@ -25,7 +25,5 @@ jobs:
       # Build and push Docker image to GitHub Container Registry
       - name: Build and Push Docker Image
         run: |
-          LOWER_REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
-          echo "Building image: ghcr.io/${LOWER_REPO}/projfabsoftbackend:${{ github.run_number }}"
-          docker build -t ghcr.io/${LOWER_REPO}/projfabsoftbackend:${{ github.run_number }} ./fabsoft-backend
-          docker push ghcr.io/${LOWER_REPO}/projfabsoftbackend:${{ github.run_number }}
+          docker build -t ghcr.io/pedroplacidina/projfabsoftbackend:${{ github.run_number }} ./fabsoft-backend
+          docker push ghcr.io/pedroplacidina/projfabsoftbackend:${{ github.run_number }}

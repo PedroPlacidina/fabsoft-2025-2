@@ -51,5 +51,15 @@ public class UsuarioServiceImpl implements UsuarioService{
         return UsuarioAntigo;
     }
 
+    @Override
+    public Usuario getById(long id) {
+        var retorno = repository.findById(id);
+        if (retorno.isPresent()) {
+            return retorno.get();
+        }
+        return null;
+    }
+       
+
 
 }

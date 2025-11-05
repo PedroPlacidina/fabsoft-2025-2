@@ -16,7 +16,15 @@ export class UsuarioService {
   }
 
   saveUsuario(usuario:Usuario){
+    if(usuario.id){
+      return this.http.put(this.apiUrl + '/' + usuario.id, usuario)
+    }
     return this.http.post(this.apiUrl, usuario)
   }
+
+  getUsuarioById(id:string){
+    return this.http.get<Usuario>(this.apiUrl + '/' + id)
+  }
+
   
 }

@@ -8,6 +8,7 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Tefone</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +16,8 @@
                 <td>{{ umUsuario.nome }}</td>
                 <td>{{ umUsuario.email }}</td>
                 <td>{{ umUsuario.telefone }}</td>
+                <td> <button (click)="alterar(umUsuario)" 
+                    class="btn btn-secondary">Alterar</button> </td>
             </tr>
         </tbody>
     </table>

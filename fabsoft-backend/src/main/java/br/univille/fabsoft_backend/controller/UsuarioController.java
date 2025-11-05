@@ -60,6 +60,18 @@ public class UsuarioController {
         
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Usuario> getUsuarioById(@PathVariable long id){
+
+        var usuario = service.getById(id);
+        if (usuario == null) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+       
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable long id){
         if(id <= 0 || usuario == null){

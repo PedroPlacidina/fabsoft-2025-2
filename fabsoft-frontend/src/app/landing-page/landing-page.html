@@ -1,0 +1,259 @@
+<!-- Header -->
+<header class="main-header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" routerLink="/">
+        <i class="bi bi-house-heart me-2"></i>PetHostel
+      </a>
+      
+      <div class="navbar-nav ms-auto">
+        <div class="d-flex align-items-center gap-3">
+          <ng-container *ngIf="!isLoggedIn; else userLoggedIn">
+            <a class="btn btn-outline-primary btn-sm" routerLink="/login">Entrar</a>
+            <a class="btn btn-primary btn-sm" routerLink="/cadastro">Cadastrar</a>
+          </ng-container>
+          <ng-template #userLoggedIn>
+            <span class="text-muted">Olá, {{currentUser?.nome}}</span>
+            <a class="btn btn-outline-primary btn-sm" (click)="logout()">Sair</a>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center min-vh-80">
+      <div class="col-lg-6">
+        <h1 class="hero-title">Hospedagem para seu pet com muito amor e cuidado</h1>
+        <p class="hero-subtitle">Oferecemos um ambiente seguro, confortável e divertido para seu pet enquanto você viaja</p>
+        
+        <div class="hero-features">
+          <div class="feature-item">
+            <i class="bi bi-shield-check text-primary"></i>
+            <span>Monitoramento 24h</span>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-house-door text-primary"></i>
+            <span>Ambiente climatizado</span>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-camera-video text-primary"></i>
+            <span>Fotos e vídeos diários</span>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg mt-4" (click)="fazerReserva()">
+          <i class="bi bi-calendar-check me-2"></i>
+          {{isLoggedIn ? 'Fazer Reserva Agora' : 'Fazer Login para Reservar'}}
+        </button>
+      </div>
+      
+      <div class="col-lg-6">
+        <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+             alt="Cachorro feliz no PetHostel" class="hero-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ NOVO: Carousel Sobre o PetHostel -->
+<section class="about-carousel py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Conheça o PetHostel</h2>
+    
+    <div id="petHostelCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#petHostelCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#petHostelCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#petHostelCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#petHostelCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+      
+      <div class="carousel-inner rounded-3">
+        <div class="carousel-item active">
+          <div class="carousel-content">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     class="d-block w-100 rounded" alt="Ambiente do PetHostel">
+              </div>
+              <div class="col-md-6">
+                <h3 class="text-primary">Ambiente Confortável</h3>
+                <p class="lead">Nossos espaços são projetados para oferecer máximo conforto e segurança para seu pet. Áreas amplas, camas confortáveis e temperatura controlada.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <div class="carousel-content">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     class="d-block w-100 rounded" alt="Atividades recreativas">
+              </div>
+              <div class="col-md-6">
+                <h3 class="text-primary">Atividades Recreativas</h3>
+                <p class="lead">Brincadeiras diárias, exercícios supervisionados e socialização controlada para manter seu pet feliz e saudável durante toda a estadia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <div class="carousel-content">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1560743641-3914f2c45636?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     class="d-block w-100 rounded" alt="Cuidados especiais">
+              </div>
+              <div class="col-md-6">
+                <h3 class="text-primary">Cuidados Especiais</h3>
+                <p class="lead">Equipe especializada em comportamento animal, alimentação balanceada e acompanhamento personalizado para cada hóspede.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-item">
+          <div class="carousel-content">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     class="d-block w-100 rounded" alt="Comunicação constante">
+              </div>
+              <div class="col-md-6">
+                <h3 class="text-primary">Comunicação Constante</h3>
+                <p class="lead">Receba fotos, vídeos e atualizações diárias do seu pet. Fique tranquilo sabendo que seu amigo está bem cuidado e feliz.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="carousel-control-prev" type="button" data-bs-target="#petHostelCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#petHostelCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Formulário de Reserva Rápida -->
+<section class="reserva-rapida py-5" *ngIf="isLoggedIn">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5">
+          <h2 class="display-6 fw-bold text-primary">Faça sua Reserva Rápida</h2>
+          <p class="lead text-muted">Preencha os dados do seu pet para reservar uma estadia</p>
+        </div>
+
+        <div class="card shadow border-0">
+          <div class="card-body p-4">
+            <form (ngSubmit)="fazerReservaRapida()" #reservaForm="ngForm">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="nomePet" class="form-label fw-semibold">Nome do Pet *</label>
+                  <input type="text" class="form-control" id="nomePet" name="nomePet" 
+                         [(ngModel)]="reservaRapida.nomePet" required
+                         placeholder="Digite o nome do seu pet">
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="tipoPet" class="form-label fw-semibold">Tipo de Pet *</label>
+                  <select class="form-select" id="tipoPet" name="tipoPet" 
+                          [(ngModel)]="reservaRapida.tipoPet" required>
+                    <option value="">Selecione...</option>
+                    <option value="cachorro">Cachorro</option>
+                    <option value="gato">Gato</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="dataEntrada" class="form-label fw-semibold">Data de Entrada *</label>
+                  <input type="date" class="form-control" id="dataEntrada" name="dataEntrada" 
+                         [(ngModel)]="reservaRapida.dataEntrada" required>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                  <label for="dataSaida" class="form-label fw-semibold">Data de Saída *</label>
+                  <input type="date" class="form-control" id="dataSaida" name="dataSaida" 
+                         [(ngModel)]="reservaRapida.dataSaida" required>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="observacoes" class="form-label fw-semibold">Observações</label>
+                <textarea class="form-control" id="observacoes" name="observacoes" 
+                          [(ngModel)]="reservaRapida.observacoes" rows="3"
+                          placeholder="Alguma informação importante sobre seu pet?"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg w-100" 
+                      [disabled]="!reservaForm.form.valid">
+                <i class="bi bi-send me-2"></i>Enviar Reserva
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Serviços -->
+<section class="services-section py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center mb-5">Por que escolher o PetHostel?</h2>
+    
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <div class="service-icon">
+            <i class="bi bi-heart-pulse"></i>
+          </div>
+          <h4>Cuidado Veterinário</h4>
+          <p>Parceria com veterinários para emergências 24h</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <div class="service-icon">
+            <i class="bi bi-play-btn"></i>
+          </div>
+          <h4>Brincadeiras Diárias</h4>
+          <p>Atividades recreativas para manter seu pet ativo</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="service-card text-center">
+          <div class="service-icon">
+            <i class="bi bi-chat-dots"></i>
+          </div>
+          <h4>Atualizações em Tempo Real</h4>
+          <p>Receba fotos e vídeos do seu pet todos os dias</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ APENAS UM FOOTER -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p class="mb-0">&copy; 2024 PetHostel. Todos os direitos reservados.</p>
+  </div>
+</footer>

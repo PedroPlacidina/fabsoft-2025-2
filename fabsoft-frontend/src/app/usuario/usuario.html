@@ -1,47 +1,65 @@
-<main class="container">
-    <h2>Usuarios</h2>
-    <button class="btn btn-primary" (click)="novo()">Novo</button>
+<main class="container my-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h3 fw-bold text-primary mb-0">Usuários</h2>
+    <button class="btn btn-primary" (click)="novo()">
+      <i class="bi bi-plus-circle me-2"></i>Novo Usuário
+    </button>
+  </div>
 
-    <table class="table">
-        <thead>
+  <div class="card shadow border-0">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead class="table-primary">
             <tr>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Tefone</th>
-                <th></th>
+              <th class="border-0">Nome</th>
+              <th class="border-0">Email</th>
+              <th class="border-0">Telefone</th>
+              <th class="border-0 text-end">Ações</th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             <tr *ngFor="let umUsuario of listaUsuario">
-                <td>{{ umUsuario.nome }}</td>
-                <td>{{ umUsuario.email }}</td>
-                <td>{{ umUsuario.telefone }}</td>
-                <td> <button
-                        (click)="alterar(umUsuario)" 
-                    class="btn btn-secondary">Alterar</button>
-                    <button 
-                        (click)="abrirComfirmacao(umUsuario)" 
-                    class="btn btn-danger">Excluir</button> 
-
-                </td>
+              <td class="align-middle fw-semibold">{{ umUsuario.nome }}</td>
+              <td class="align-middle">{{ umUsuario.email }}</td>
+              <td class="align-middle">{{ umUsuario.telefone }}</td>
+              <td class="align-middle text-end">
+                <div class="btn-group btn-group-sm" role="group">
+                  <button (click)="alterar(umUsuario)" 
+                          class="btn btn-outline-primary">
+                    <i class="bi bi-pencil me-1"></i>Alterar
+                  </button>
+                  <button (click)="abrirComfirmacao(umUsuario)" 
+                          class="btn btn-outline-danger">
+                    <i class="bi bi-trash me-1"></i>Excluir
+                  </button>
+                </div>
+              </td>
             </tr>
-        </tbody>
-    </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </main>
 
-<div class="modal fade" #myModal tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Excluir usuario</h5>
-            </div>
-                <div class="modal-body">
-                Confirma a exclusão do usuario?
-                </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="fecharConfirmacao()">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="confirmarExclusao()">Sim</button>
-            </div>
-        </div>
+<!-- Modal de Confirmação -->
+<div class="modal fade" #myModal tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="confirmModalLabel">
+          <i class="bi bi-exclamation-triangle me-2"></i>Excluir Usuário
+        </h5>
+      </div>
+      <div class="modal-body">
+        <p class="mb-0">Confirma a exclusão do usuario <strong>{{usuarioSelecionado.nome}}</strong>?</p>
+        <small class="text-muted">Esta ação não pode ser desfeita.</small>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="fecharConfirmacao()">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="confirmarExclusao()">Sim, Excluir</button>
+      </div>
     </div>
+  </div>
 </div>

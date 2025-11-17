@@ -1,0 +1,186 @@
+.hero-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.min-vh-80 {
+  min-height: 80vh;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #6c757d;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.hero-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.service-card {
+  padding: 2rem 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-icon {
+  font-size: 3rem;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.step-card {
+  padding: 2rem 1rem;
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0 auto 1rem;
+}
+
+.login-container, .cadastro-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.login-card, .cadastro-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-header, .cadastro-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-features {
+    flex-direction: column;
+  }
+}
+
+/* Estilos do Carousel */
+.about-carousel {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.about-carousel h2 {
+  color: white;
+}
+
+.carousel-content {
+  padding: 2rem;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-content h3 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.carousel-content .lead {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.carousel-indicators button {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+}
+
+.carousel-indicators .active {
+  background-color: white;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  padding: 15px;
+}
+
+/* Ajustes de responsividade */
+@media (max-width: 768px) {
+  .carousel-content {
+    padding: 1rem;
+    min-height: 300px;
+    text-align: center;
+  }
+  
+  .carousel-content .row {
+    flex-direction: column;
+  }
+  
+  .carousel-content img {
+    margin-bottom: 1rem;
+  }
+}

@@ -1,0 +1,38 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-header">
+      <h2>Entrar na minha conta</h2>
+      <p>Informe seus dados para acessar</p>
+    </div>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" 
+               [(ngModel)]="credentials.email" required
+               class="form-control" placeholder="seu@email.com">
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" 
+               [(ngModel)]="credentials.senha" required
+               class="form-control" placeholder="Sua senha">
+      </div>
+
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" 
+              [disabled]="!loginForm.form.valid || isLoading">
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+        {{ isLoading ? 'Entrando...' : 'Entrar' }}
+      </button>
+    </form>
+
+    <div class="login-footer">
+      <p>Não tem uma conta? <a routerLink="/cadastro" class="link-primary">Cadastre-se</a></p>
+    </div>
+  </div>
+</div>

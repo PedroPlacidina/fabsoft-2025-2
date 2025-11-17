@@ -20,7 +20,7 @@ export class UsuarioComponent {
   @ViewChild('myModal') modalElement!: ElementRef;
   private modal!: bootstrap.Modal;
 
-  private usuarioSelecionado!: Usuario;
+  public usuarioSelecionado!: Usuario;
 
   constructor(
     private usuarioService: UsuarioService,

@@ -1,24 +1,69 @@
-<main class="container">
-    <h2>Usuario</h2>
-    <div class="card">
-        <div class="card-body">
-            <div class="form-group">
-                <label for="txtNome">Nome</label>
-                <input type="text" [(ngModel)]="usuario.nome" 
-                class="form-control" id="txtNome">
+<main class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="h4 fw-bold text-primary mb-0">
+          {{usuario.id ? 'Editar' : 'Novo'}} Usuário
+        </h2>
+        <button class="btn btn-outline-secondary btn-sm" routerLink="/usuarios">
+          <i class="bi bi-arrow-left me-1"></i>Voltar
+        </button>
+      </div>
+
+      <div class="card shadow border-0">
+        <div class="card-body p-4">
+          <form (ngSubmit)="salvar()" #usuarioForm="ngForm">
+            
+            <div class="mb-3">
+              <label for="txtNome" class="form-label fw-semibold">Nome *</label>
+              <input type="text" class="form-control" id="txtNome" 
+                     [(ngModel)]="usuario.nome" name="nome" required
+                     placeholder="Digite o nome completo">
             </div>
-            <div class="form-group">
-                <label for="txtEmail">Email:</label>
-                <input type="text" [(ngModel)]="usuario.email" 
-                class="form-control" id="txtEmail">
+
+            <div class="mb-3">
+              <label for="txtEmail" class="form-label fw-semibold">Email *</label>
+              <input type="email" class="form-control" id="txtEmail" 
+                     [(ngModel)]="usuario.email" name="email" required
+                     placeholder="exemplo@email.com">
             </div>
-            <div class="form-group">
-                <label for="txtTelefone">Telefone</label>
-                <input type="text" [(ngModel)]="usuario.telefone" 
-                class="form-control" id="txtTelefone">
+
+            <div class="mb-3">
+              <label for="txtTelefone" class="form-label fw-semibold">Telefone</label>
+              <input type="tel" class="form-control" id="txtTelefone" 
+                     [(ngModel)]="usuario.telefone" name="telefone"
+                     placeholder="(00) 00000-0000">
             </div>
+
+            <!-- Campo Tipo de Usuário -->
+            <div class="mb-3">
+              <label for="txtTipo" class="form-label fw-semibold">Tipo de Usuário *</label>
+              <select class="form-select" id="txtTipo" 
+                      [(ngModel)]="usuario.tipo" name="tipo" required>
+                <option value="cliente">Cliente</option>
+                <option value="admin">Administrador</option>
+              </select>
+            </div>
+
+            <div class="mb-4" *ngIf="!usuario.id">
+              <label for="txtSenha" class="form-label fw-semibold">Senha *</label>
+              <input type="password" class="form-control" id="txtSenha" 
+                     [(ngModel)]="usuario.senha" name="senha" required
+                     placeholder="Digite uma senha">
+            </div>
+
+            <div class="d-flex gap-2 justify-content-end">
+              <button type="button" class="btn btn-secondary" routerLink="/usuarios">
+                Cancelar
+              </button>
+              <button type="submit" class="btn btn-primary" 
+                      [disabled]="!usuarioForm.form.valid">
+                <i class="bi bi-check2 me-1"></i>Salvar
+              </button>
+            </div>
+          </form>
         </div>
-        <button (click)="salvar()"
-            class="btn btn-primary">Salvar</button>
+      </div>
     </div>
+  </div>
 </main>

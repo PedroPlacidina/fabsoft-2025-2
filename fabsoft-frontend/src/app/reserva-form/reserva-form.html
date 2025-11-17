@@ -1,0 +1,84 @@
+<main class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold text-primary">Faça sua Reserva</h1>
+        <p class="lead text-muted">Preencha os dados do seu pet para reservar uma estadia conosco</p>
+      </div>
+
+      <div class="card shadow border-0">
+        <div class="card-body p-4">
+          <form (ngSubmit)="submitReserva()" #reservaForm="ngForm">
+            
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="nomePet" class="form-label fw-semibold">Nome do Pet *</label>
+                <input type="text" class="form-control" id="nomePet" name="nomePet" 
+                       [(ngModel)]="reserva.nomePet" required
+                       placeholder="Digite o nome do seu pet">
+              </div>
+              
+              <div class="col-md-6">
+                <label for="tipoPet" class="form-label fw-semibold">Tipo de Pet *</label>
+                <select class="form-select" id="tipoPet" name="tipoPet" 
+                        [(ngModel)]="reserva.tipoPet" required>
+                  <option value="">Selecione...</option>
+                  <option value="cachorro">Cachorro</option>
+                  <option value="gato">Gato</option>
+                  <option value="outro">Outro</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="raca" class="form-label fw-semibold">Raça</label>
+                <input type="text" class="form-control" id="raca" name="raca" 
+                       [(ngModel)]="reserva.raca"
+                       placeholder="Raça do pet">
+              </div>
+              
+              <div class="col-md-6">
+                <label for="idade" class="form-label fw-semibold">Idade</label>
+                <input type="number" class="form-control" id="idade" name="idade" 
+                       [(ngModel)]="reserva.idade"
+                       placeholder="Idade em anos">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="dataEntrada" class="form-label fw-semibold">Data de Entrada *</label>
+                <input type="date" class="form-control" id="dataEntrada" name="dataEntrada" 
+                       [(ngModel)]="reserva.dataEntrada" required>
+              </div>
+              
+              <div class="col-md-6">
+                <label for="dataSaida" class="form-label fw-semibold">Data de Saída *</label>
+                <input type="date" class="form-control" id="dataSaida" name="dataSaida" 
+                       [(ngModel)]="reserva.dataSaida" required>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="observacoes" class="form-label fw-semibold">Observações</label>
+              <textarea class="form-control" id="observacoes" name="observacoes" 
+                        [(ngModel)]="reserva.observacoes" rows="4"
+                        placeholder="Alguma informação importante sobre seu pet?"></textarea>
+            </div>
+
+            <div class="form-actions">
+            <button type="button" class="btn btn-secondary" (click)="cancelar()">
+                Cancelar
+            </button>
+            <button type="submit" class="btn btn-primary" 
+                    [disabled]="!reservaForm.form.valid">
+                Enviar Reserva
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

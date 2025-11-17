@@ -37,27 +37,33 @@ export class AuthService {
         }
       },
       error: (error) => {
-        console.error('Erro ao buscar usuários:', error);
-        alert('Erro ao fazer login. Tente novamente.');
+        console.error('Erro ao fazer login:', error);
+        alert('Erro ao fazer login. Verifique se o backend está rodando.');
       }
     });
   }
 
-  cadastrar(usuario: Usuario): void {
-    // Para cadastro, vamos usar uma abordagem mais simples
-    // já que o backend vai validar o email único
+  cadastrar(usuario: Usuario, callback: (success: boolean) => void): void {
+    if (!usuario.nome || !usuario.email || !usuario.senha) {
+      alert('Preencha todos os campos obrigatórios!');
+      callback(false);
+      return;
+    }
+
     this.usuarioService.saveUsuario(usuario).subscribe({
       next: () => {
         alert('Cadastro realizado com sucesso!');
+        callback(true);
         this.router.navigate(['/login']);
       },
       error: (error) => {
         console.error('Erro ao cadastrar usuário:', error);
-        if (error.status === 400) {
+        if (error.status === 400 || error.error?.message?.includes('email')) {
           alert('Este email já está cadastrado!');
         } else {
-          alert('Erro ao cadastrar. Tente novamente.');
+          alert('Erro ao cadastrar. Verifique se o backend está rodando.');
         }
+        callback(false);
       }
     });
   }

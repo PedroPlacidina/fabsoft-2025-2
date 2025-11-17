@@ -1,3 +1,13 @@
+<nav class="navbar navbar-dark bg-primary shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" routerLink="/">
+      <i class="bi bi-house-heart me-2"></i>PetHostel - Admin
+    </a>
+    <div class="navbar-nav">
+      <a class="nav-link text-white" routerLink="/">Voltar ao Site</a>
+    </div>
+  </div>
+</nav>
 <main class="container my-4">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="h3 fw-bold text-primary mb-0">Usuários</h2>
@@ -43,7 +53,6 @@
   </div>
 </main>
 
-<!-- Modal de Confirmação -->
 <div class="modal fade" #myModal tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -53,7 +62,7 @@
         </h5>
       </div>
       <div class="modal-body">
-        <p class="mb-0">Confirma a exclusão do usuario <strong>{{usuarioSelecionado.nome}}</strong>?</p>
+        <p class="mb-0">Confirma a exclusão do usuario <strong>{{usuarioSelecionado.nome || 'este usuário'}}</strong>?</p>
         <small class="text-muted">Esta ação não pode ser desfeita.</small>
       </div>
       <div class="modal-footer">

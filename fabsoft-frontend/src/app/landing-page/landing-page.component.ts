@@ -22,6 +22,14 @@ export class LandingPageComponent implements OnInit {
     observacoes: ''
   };
 
+  irParaLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  irParaCadastro() {
+    this.router.navigate(['/cadastro']);
+  }
+
   constructor(
     private router: Router,
     private authService: AuthService

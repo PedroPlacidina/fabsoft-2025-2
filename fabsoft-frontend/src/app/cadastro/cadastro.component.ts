@@ -13,7 +13,7 @@ import { Usuario } from '../model/usuario';
 })
 export class CadastroComponent {
   usuario: Usuario = new Usuario();
-  confirmarSenha: string = ''; 
+  confirmarSenha: string = '';
   
   errorMessage = '';
   successMessage = '';
@@ -29,6 +29,7 @@ export class CadastroComponent {
     this.errorMessage = '';
     this.successMessage = '';
 
+    // Validações
     if (this.usuario.senha !== this.confirmarSenha) {
       this.errorMessage = 'As senhas não coincidem!';
       this.isLoading = false;
@@ -41,10 +42,13 @@ export class CadastroComponent {
       return;
     }
 
-    this.authService.cadastrar(this.usuario);
-    this.isLoading = false;
+    this.authService.cadastrar(this.usuario, (success: boolean) => {
+      this.isLoading = false;
+      if (success) {
+        this.successMessage = 'Cadastro realizado com sucesso!';
+      }
+    });
   }
-
 
   cancelar() {
     this.router.navigate(['/']);

@@ -12,7 +12,7 @@ import { Usuario } from '../model/usuario';
   styleUrl: './cadastro.css'
 })
 export class CadastroComponent {
-  usuario: Usuario = new Usuario();
+  usuario: Usuario = new Usuario(); 
   confirmarSenha: string = '';
   
   errorMessage = '';
@@ -29,7 +29,6 @@ export class CadastroComponent {
     this.errorMessage = '';
     this.successMessage = '';
 
-    // Validações
     if (this.usuario.senha !== this.confirmarSenha) {
       this.errorMessage = 'As senhas não coincidem!';
       this.isLoading = false;
@@ -52,5 +51,31 @@ export class CadastroComponent {
 
   cancelar() {
     this.router.navigate(['/']);
+  }
+
+
+  onTelefoneInput(event: any) {
+
+    let value = event.target.value.replace(/\D/g, '');
+    
+
+    if (value.length > 11) {
+      value = value.substring(0, 11);
+    }
+
+
+    if (value.length > 10) {
+
+      value = value.replace(/^(\d\d)(\d{5})(\d{4}).*/, '($1) $2-$3');
+    } else if (value.length > 5) {
+
+      value = value.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+    } else if (value.length > 2) {
+      value = value.replace(/^(\d\d)(\d{0,5}).*/, '($1) $2');
+    }
+
+
+    this.usuario.telefone = value;
+    event.target.value = value;
   }
 }

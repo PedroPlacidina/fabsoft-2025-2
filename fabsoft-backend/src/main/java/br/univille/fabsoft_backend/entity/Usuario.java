@@ -1,6 +1,5 @@
 package br.univille.fabsoft_backend.entity;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,21 +15,27 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank(message = "O nome é obrigatório")
     private String nome;
-    @Column(length = 100)
+
+    @Column(length = 150) // Aumentado
     @Email(message = "Email inválido")
     private String email;
-    @Pattern(regexp = "\\d{4,5}-?\\d{4}$", message = "Telefone inválido")
+
+    // REGEX ATUALIZADO: Aceita (47) 99999-9999 ou apenas numeros com DDD
+    @Pattern(regexp = "^\\(?\\d{2}\\)?\\s?\\d{4,5}-?\\d{4}$", message = "Telefone inválido. Use o formato (XX) XXXXX-XXXX")
+    @Column(length = 20) // Aumentado para caber a máscara
     private String telefone;
-    @Column(length = 10)
+
+    @Column(length = 255) // MUITO IMPORTANTE: Aumentado de 10 para 255
     private String senha;
+    
     private String tipo;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -41,54 +46,21 @@ public class Usuario {
     @JoinColumn(name = "usuario_id") 
     private List<Reserva> reservas = new ArrayList<>(); 
 
-    
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-    public List<Pet> getPets() {
-        return pets;
-    }
-    public void setPets(List<Pet> pets) {
-        this.pets = pets;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getTelefone() {
-        return telefone;
-    }
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-    public String getTipo() {
-        return tipo;
-    }
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getNome() {
-        return nome;
-    }
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    // Getters e Setters
+    public List<Reserva> getReservas() { return reservas; }
+    public void setReservas(List<Reserva> reservas) { this.reservas = reservas; }
+    public List<Pet> getPets() { return pets; }
+    public void setPets(List<Pet> pets) { this.pets = pets; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
 }

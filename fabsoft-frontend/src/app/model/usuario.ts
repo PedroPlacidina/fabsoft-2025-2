@@ -1,13 +1,13 @@
 export class Usuario {
-    id: number = 0;
+    id?: number; 
     nome: string = '';
     email: string = '';
     telefone: string = '';
     senha: string = '';
-    tipo: string = 'cliente';
-    
+    tipo: string = 'cliente'; 
+
+
     constructor() {
-        this.id = 0;
         this.nome = '';
         this.email = '';
         this.telefone = '';

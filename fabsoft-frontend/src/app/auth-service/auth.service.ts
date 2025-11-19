@@ -50,18 +50,31 @@ export class AuthService {
       return;
     }
 
+    console.log('📤 Dados sendo enviados para API:', usuario); 
+
     this.usuarioService.saveUsuario(usuario).subscribe({
-      next: () => {
+      next: (response) => {
+        console.log('✅ Resposta da API:', response); 
         alert('Cadastro realizado com sucesso!');
         callback(true);
         this.router.navigate(['/login']);
       },
       error: (error) => {
-        console.error('Erro ao cadastrar usuário:', error);
-        if (error.status === 400 || error.error?.message?.includes('email')) {
-          alert('Este email já está cadastrado!');
+        console.error('❌ Erro completo:', error); 
+        console.error('❌ Mensagem de erro:', error.error); 
+        
+        if (error.status === 400) {
+          if (error.error && typeof error.error === 'string') {
+            alert(`Erro de validação: ${error.error}`);
+          } else if (error.error && error.error.message) {
+            alert(`Erro: ${error.error.message}`);
+          } else {
+            alert('Erro ao cadastrar. Verifique os dados e tente novamente.');
+          }
+        } else if (error.status === 0) {
+          alert('Erro de conexão. Verifique se o backend está rodando.');
         } else {
-          alert('Erro ao cadastrar. Verifique se o backend está rodando.');
+          alert('Erro ao cadastrar. Tente novamente.');
         }
         callback(false);
       }

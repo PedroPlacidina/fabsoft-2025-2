@@ -48,7 +48,10 @@ export class UsuarioComponent {
   }
 
   alterar(umUsuario: Usuario){
-    this.router.navigate(['usuarios/alterar', umUsuario.id]);
+    // Verifica se o ID existe antes de tentar navegar
+    if(umUsuario.id) {
+        this.router.navigate(['usuarios/alterar', umUsuario.id]);
+    }
   }
 
   abrirComfirmacao(usuario: Usuario){
@@ -62,16 +65,25 @@ export class UsuarioComponent {
   }
 
   confirmarExclusao(){
-    this.usuarioService.excluirUsuario(this.usuarioSelecionado.id.toString())
-      .subscribe({
-        next: () => {
-          this.fecharConfirmacao();
-          this.carregarUsuarios(); 
-        },
-        error: (error) => {
-          console.error('Erro ao excluir usuário:', error);
-          alert('Erro ao excluir usuário.');
-        }
-      });
+    // AQUI ESTÁ A CORREÇÃO:
+    // Verificamos se "usuarioSelecionado.id" existe antes de usar
+    if (this.usuarioSelecionado.id) {
+      
+      this.usuarioService.excluirUsuario(this.usuarioSelecionado.id.toString())
+        .subscribe({
+          next: () => {
+            this.fecharConfirmacao();
+            this.carregarUsuarios(); 
+          },
+          error: (error) => {
+            console.error('Erro ao excluir usuário:', error);
+            alert('Erro ao excluir usuário.');
+          }
+        });
+    
+    } else {
+      console.error("Tentativa de excluir usuário sem ID");
+      this.fecharConfirmacao();
+    }
   }
 }

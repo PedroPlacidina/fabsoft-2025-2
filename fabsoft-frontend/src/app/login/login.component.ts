@@ -28,7 +28,6 @@ export class LoginComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
-    // ✅ CHAMA O AUTH SERVICE QUE AGORA USA SEU USUARIO SERVICE
     this.authService.login(this.credentials.email, this.credentials.senha);
     this.isLoading = false;
   }

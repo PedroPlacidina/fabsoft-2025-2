@@ -9,40 +9,58 @@
       <div class="card shadow border-0">
         <div class="card-body p-4">
           <form (ngSubmit)="submitReserva()" #reservaForm="ngForm">
-            
+
             <div class="row mb-3">
               <div class="col-md-6">
                 <label for="nomePet" class="form-label fw-semibold">Nome do Pet *</label>
                 <input type="text" class="form-control" id="nomePet" name="nomePet" 
-                       [(ngModel)]="reserva.nomePet" required
+                       [(ngModel)]="formDados.nomePet" required
                        placeholder="Digite o nome do seu pet">
               </div>
               
               <div class="col-md-6">
                 <label for="tipoPet" class="form-label fw-semibold">Tipo de Pet *</label>
                 <select class="form-select" id="tipoPet" name="tipoPet" 
-                        [(ngModel)]="reserva.tipoPet" required>
+                        [(ngModel)]="formDados.tipoPet" required>
                   <option value="">Selecione...</option>
-                  <option value="cachorro">Cachorro</option>
-                  <option value="gato">Gato</option>
-                  <option value="outro">Outro</option>
+                  <option value="Cachorro">Cachorro</option>
+                  <option value="Gato">Gato</option>
+                  <option value="Pássaro">Pássaro</option>
+                  <option value="Outro">Outro</option>
                 </select>
               </div>
             </div>
+
 
             <div class="row mb-3">
               <div class="col-md-6">
                 <label for="raca" class="form-label fw-semibold">Raça</label>
                 <input type="text" class="form-control" id="raca" name="raca" 
-                       [(ngModel)]="reserva.raca"
-                       placeholder="Raça do pet">
+                       [(ngModel)]="formDados.raca"
+                       placeholder="Ex: Poodle, Persa, Vira-lata...">
               </div>
               
-              <div class="col-md-6">
-                <label for="idade" class="form-label fw-semibold">Idade</label>
+              <div class="col-md-3">
+                <label for="idade" class="form-label fw-semibold">Idade (anos)</label>
                 <input type="number" class="form-control" id="idade" name="idade" 
-                       [(ngModel)]="reserva.idade"
-                       placeholder="Idade em anos">
+                       [(ngModel)]="formDados.idade" min="0"
+                       placeholder="0">
+              </div>
+
+              <div class="col-md-3">
+                <label for="peso" class="form-label fw-semibold">Peso (kg)</label>
+                
+                <input type="number" class="form-control" id="peso" name="peso" 
+                      [(ngModel)]="formDados.peso" 
+                      #pesoCtrl="ngModel"
+                      step="0.1" min="0.1" required
+                      [class.is-invalid]="pesoCtrl.invalid && pesoCtrl.touched"
+                      placeholder="0.0">
+                
+                <!-- Mensagem de erro visual -->
+                <div *ngIf="pesoCtrl.invalid && pesoCtrl.touched" class="invalid-feedback">
+                  Peso inválido.
+                </div>
               </div>
             </div>
 
@@ -50,31 +68,32 @@
               <div class="col-md-6">
                 <label for="dataEntrada" class="form-label fw-semibold">Data de Entrada *</label>
                 <input type="date" class="form-control" id="dataEntrada" name="dataEntrada" 
-                       [(ngModel)]="reserva.dataEntrada" required>
+                       [(ngModel)]="formDados.dataEntrada" required>
               </div>
               
               <div class="col-md-6">
                 <label for="dataSaida" class="form-label fw-semibold">Data de Saída *</label>
                 <input type="date" class="form-control" id="dataSaida" name="dataSaida" 
-                       [(ngModel)]="reserva.dataSaida" required>
+                       [(ngModel)]="formDados.dataSaida" required>
               </div>
             </div>
 
             <div class="mb-4">
               <label for="observacoes" class="form-label fw-semibold">Observações</label>
               <textarea class="form-control" id="observacoes" name="observacoes" 
-                        [(ngModel)]="reserva.observacoes" rows="4"
-                        placeholder="Alguma informação importante sobre seu pet?"></textarea>
+                        [(ngModel)]="formDados.observacoes" rows="4"
+                        placeholder="Alguma informação importante sobre saúde, medicamentos ou comportamento?"></textarea>
             </div>
 
-            <div class="form-actions">
-            <button type="button" class="btn btn-secondary" (click)="cancelar()">
-                Cancelar
-            </button>
-            <button type="submit" class="btn btn-primary" 
-                    [disabled]="!reservaForm.form.valid">
-                Enviar Reserva
-            </button>
+            <div class="d-flex gap-2 justify-content-end">
+                <button type="button" class="btn btn-secondary" (click)="cancelar()">
+                    Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary" 
+                        [disabled]="!reservaForm.form.valid || isLoading">
+                    <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+                    {{ isLoading ? 'Enviando...' : 'Enviar Reserva' }}
+                </button>
             </div>
           </form>
         </div>

@@ -1,3 +1,6 @@
+import { Pet } from './pet';
+import { Reserva } from './reserva';
+
 export class Usuario {
     id?: number; 
     nome: string = '';
@@ -6,6 +9,8 @@ export class Usuario {
     senha: string = '';
     tipo: string = 'cliente'; 
 
+    pets: Pet[] = [];
+    reservas: Reserva[] = [];
 
     constructor() {
         this.nome = '';
@@ -13,5 +18,7 @@ export class Usuario {
         this.telefone = '';
         this.senha = '';
         this.tipo = 'cliente';
+        this.pets = [];
+        this.reservas = [];
     }
 }

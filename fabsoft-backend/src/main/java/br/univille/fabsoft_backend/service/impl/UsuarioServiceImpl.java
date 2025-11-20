@@ -28,18 +28,28 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public Usuario update(long id, Usuario usuario) throws Exception {
-        
-        var UsuarioAntigo = repository.findById(id)
+        var usuarioAntigo = repository.findById(id)
             .orElseThrow( () -> new IllegalArgumentException("Usuario nao encontrado com ID :" + id));
                 
-        UsuarioAntigo.setNome(usuario.getNome());
-        UsuarioAntigo.setEmail(usuario.getEmail());
-        UsuarioAntigo.setTelefone(usuario.getTelefone());
-        UsuarioAntigo.setSenha(usuario.getSenha());
-        UsuarioAntigo.setTipo(usuario.getTipo());
+        usuarioAntigo.setNome(usuario.getNome());
+        usuarioAntigo.setEmail(usuario.getEmail());
+        usuarioAntigo.setTelefone(usuario.getTelefone());
+        
+        if(usuario.getSenha() != null && !usuario.getSenha().isBlank()) {
+            usuarioAntigo.setSenha(usuario.getSenha());
+        }
+        if(usuario.getPets() != null) {
+            usuarioAntigo.getPets().clear();
+            usuarioAntigo.getPets().addAll(usuario.getPets());
+        }
+        
+        if(usuario.getReservas() != null) {
+            usuarioAntigo.getReservas().clear();
+            usuarioAntigo.getReservas().addAll(usuario.getReservas());
+        }
 
-        repository.save(UsuarioAntigo);
-        return UsuarioAntigo;
+        repository.save(usuarioAntigo);
+        return usuarioAntigo;
     }
 
     @Override
